@@ -39,6 +39,23 @@
 
                     <div class="form-group my-4">
                         <label class="control-label">
+                            Type
+                        </label>
+                        <select class="form-control" name="type_id" id="type_id">
+                            @foreach($types as $type)
+                                <option value="">Choose a type</option>
+                                <option value="{{$type->id}}" {{$type->id == old('type_id', $project->type_id) ? 'selected' : ''}}>
+                                    {{$type->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('type_id')
+                            <div class="text-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group my-4">
+                        <label class="control-label">
                             Content
                         </label>
                         <textarea type="text-area" class="form-control" placeholder="Content" id="content" name="content">{{old('title') ?? $project->content}}</textarea>

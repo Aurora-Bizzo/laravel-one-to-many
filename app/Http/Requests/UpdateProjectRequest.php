@@ -28,6 +28,7 @@ class UpdateProjectRequest extends FormRequest
             'title' => ['required', Rule::unique('projects')->ignore($this->project), 'max:150'],
             'content' => ['nullable'],
             'date_project' => ['nullable','date_format:Y-m-d'],
+            'type_id' => ['nullable', 'exixts:types,id']
         ];
     }
 
@@ -37,6 +38,7 @@ class UpdateProjectRequest extends FormRequest
             'title.require' => 'A title is required',
             'title.unique' => 'There is another project with this title',
             'title.max' => 'The title cannot be longer than 150 characters',
+            'type_id.exist' => 'Choose a valid type'
         ];
     }
 }
